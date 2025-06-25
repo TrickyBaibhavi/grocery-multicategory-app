@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GroTravel | Food & Travel Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function() {
+    emailjs.init("gw106xTrwr-d6tuuo"); // Replace with your Public Key
+  })();
+</script>
+ 
+<script>
+  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('emailInput').value;
+
+    emailjs.send("service_hqy4zmt", "template_avb3d99", {
+      user_email: emailInput
+    })
+    .then(function(response) {
+      document.getElementById('responseMessage').textContent = "✅ Subscription successful!";
+      document.getElementById('responseMessage').classList.remove('hidden');
+    }, function(error) {
+      document.getElementById('responseMessage').textContent = "❌ Something went wrong. Please try again.";
+      document.getElementById('responseMessage').classList.remove('hidden');
+    });
+
+    // Optionally reset the form
+    document.getElementById('newsletterForm').reset();
+  });
+</script>
+
+<link rel="stylesheet" href="login.html">
+<link rel="stylesheet" href="signup.html">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-fade-in-up { animation: fade-in-up 1s ease-out forwards; }
+    .float-animate { animation: float 4s ease-in-out infinite; }
+  </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white p-4 flex items-center justify-between sticky top-0 z-50 shadow-xl">
+    <div class="text-2xl font-extrabold tracking-wide">🌍 GroTravel</div>
+    <input type="text" placeholder="Search for groceries or destinations..." class="w-1/3 p-2 rounded-md border border-white text-gray-800" />
+    <div class="space-x-4 flex items-center">
+
+      <a href="login.html" class="flex items-center gap-1 hover:text-yellow-300 transition">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/user.png" class="w-5 h-5" />
+        <span>Login</span>
+      </a>
+      <a href="signup.html" class="flex items-center gap-1 hover:text-yellow-300 transition">
+        <img src="https://img.icons8.com/ios/24/ffffff/add-user-group-man-man.png" class="w-5 h-5" />
+        <span>Signup</span>
+      </a>
+      <a href="#cart" class="flex items-center gap-1 hover:text-yellow-300 transition">
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v1.png" class="w-5 h-5" />
+        <span>Cart</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-green-100 via-orange-100 to-white py-20 px-6 text-center overflow-hidden">
+    <div class="max-w-4xl mx-auto relative z-10 animate-fade-in-up">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-green-800 leading-tight mb-4 drop-shadow-lg">Discover Freshness. Plan Adventures.</h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-6">Seamless grocery shopping & effortless travel planning in one place.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#categories" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:scale-105 transition">🛒 Shop Groceries</a>
+        <a href="#itinerary" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:scale-105 transition">✈️ Plan a Trip</a>
+      </div>
+    </div>
+    <!-- Floating blobs -->
+    <div class="absolute top-0 right-0 w-56 h-56 bg-green-300 opacity-30 rounded-full blur-3xl float-animate"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-orange-200 opacity-30 rounded-full blur-3xl float-animate"></div>
+  </section>
+
+ <!-- Grocery Categories -->
+<section class="py-20 px-6 bg-white" id="categories">
+  <h2 class="text-4xl font-bold text-center text-green-700 mb-12">🧺 Featured Grocery Categories</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+ <a href="fruits.html">
+  <div class="category-card bg-gradient-to-b from-white to-green-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer">
+    <img src="https://img.icons8.com/color/96/apple.png" alt="Fruits" class="mx-auto mb-2" />
+    <p class="font-semibold text-lg">Fruits</p>
+  </div>
+</a>
+
+
+ <a href="vege.html">
+  <div class="category-card bg-gradient-to-b from-white to-green-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer">
+    <img src="https://img.icons8.com/color/96/broccoli.png" alt="Vegetables" class="mx-auto mb-2" />
+    <p class="font-semibold text-lg">Vegetables</p>
+  </div>
+</a>
+
+<a href="dairy.html">
+  <div class="category-card bg-gradient-to-b from-white to-orange-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer">
+    <img src="https://img.icons8.com/color/96/milk-bottle.png" alt="Dairy" class="mx-auto mb-2" />
+    <p class="font-semibold text-lg">Dairy</p>
+  </div>
+</a>
+
+<a href="beverages.html">
+  <div class="category-card bg-gradient-to-b from-white to-orange-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 cursor-pointer">
+    <img src="https://img.icons8.com/color/96/coffee-to-go.png" alt="Beverages" class="mx-auto mb-2" />
+    <p class="font-semibold text-lg">Beverages</p>
+  </div>
+</a>
+
+
+  </div>
+</section>
+<script>
+  // Load cart from localStorage on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    const storedCart = localStorage.getItem("cartData");
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart);
+        window.cart = parsedCart;
+      } catch (e) {
+        console.error("Error parsing cart from storage", e);
+      }
+    }
+
+    // Save cart changes to localStorage whenever updated
+    const originalUpdateCart = window.updateCart;
+    window.updateCart = function () {
+      if (typeof originalUpdateCart === 'function') originalUpdateCart();
+      localStorage.setItem("cartData", JSON.stringify(window.cart));
+    };
+
+    // Initial save if cart is modified manually
+    if (window.cart) {
+      localStorage.setItem("cartData", JSON.stringify(window.cart));
+    }
+  });
+</script>
+
+<!-- Product Display Container -->
+<section id="products" class="py-10 px-6 bg-gray-50">
+  <h3 class="text-2xl font-bold text-green-700 mb-6">🛒 Products</h3>
+  <div id="product-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Products will be loaded here -->
+  </div>
+</section>
+
+
+  <!-- Itinerary Planner -->
+  <section class="py-20 px-6 bg-orange-50" id="itinerary">
+    <h2 class="text-4xl font-bold text-center text-orange-600 mb-10">🗺️ Plan Your Travel</h2>
+    <div class="max-w-4xl mx-auto bg-white shadow-xl p-8 rounded-2xl border border-orange-200">
+      <form class="grid md:grid-cols-3 gap-4 mb-6">
+        <input type="text" placeholder="Destination" class="p-3 border border-gray-300 rounded-lg" />
+        <input type="date" class="p-3 border border-gray-300 rounded-lg" />
+        <input type="date" class="p-3 border border-gray-300 rounded-lg" />
+        <button type="submit" class="md:col-span-3 bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg transition">Add Trip</button>
+      </form>
+      <div>
+        <h3 class="font-semibold text-lg mb-4 text-gray-800">📅 Upcoming Trips</h3>
+        <ul class="space-y-3">
+          <li class="p-3 bg-gray-100 rounded-lg flex justify-between items-center shadow">
+            <span class="text-gray-700">Paris (12/08/2025 - 20/08/2025)</span>
+            <button class="text-red-500 hover:underline">Remove</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-16 bg-gradient-to-r from-green-50 to-orange-50 text-center">
+    <h2 class="text-3xl font-bold mb-4">📬 Subscribe to our newsletter</h2>
+    <p class="text-gray-600 mb-6">Get exclusive deals and travel inspiration delivered to your inbox.</p>
+   <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
+  <input type="email" name="user_email" id="emailInput" placeholder="Enter your email" class="p-3 w-full sm:w-auto border border-gray-300 rounded-lg" required />
+  <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition">Subscribe</button>
+</form>
+
+<p id="responseMessage" class="mt-4 text-sm text-green-700 font-medium hidden"></p>
+
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-6 bg-gray-100">
+    <h2 class="text-3xl font-bold text-center mb-10">❓ Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="font-semibold text-lg text-green-700 mb-2">How do I add a travel itinerary?</h3>
+        <p class="text-gray-700">Use the planner section to input your destination and travel dates, then click "Add Trip".</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="font-semibold text-lg text-green-700 mb-2">Can I order groceries while traveling?</h3>
+        <p class="text-gray-700">Absolutely! Simply update your delivery location and continue shopping.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md">
+        <h3 class="font-semibold text-lg text-green-700 mb-2">Is there a mobile app available?</h3>
+        <p class="text-gray-700">We are working on it! Stay tuned for our app on Android & iOS soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6 mt-10">
+    <p class="text-sm">&copy; 2025 <span class="text-green-400 font-bold">GroTravel</span>. All rights reserved.</p>
+  </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const storedCart = localStorage.getItem("cartData");
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart);
+        window.cart = parsedCart;
+      } catch (e) {
+        console.error("Error parsing cart from storage", e);
+      }
+    } else {
+      window.cart = {};
+    }
+
+    const updateCartIcon = () => {
+      const cart = JSON.parse(localStorage.getItem('cartData')) || {};
+      const totalQty = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+      const cartIcon = document.querySelector('#cartCount');
+      if (cartIcon) {
+        cartIcon.textContent = totalQty > 0 ? totalQty : '0';
+      }
+    };
+
+    updateCartIcon();
+
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const card = this.closest(".card");
+        const name = card.querySelector("h3").innerText;
+        const price = parseInt(card.querySelector(".price").innerText.replace("₹", ""));
+        const emoji = card.querySelector(".emoji")?.innerText || "";
+
+        let cart = JSON.parse(localStorage.getItem("cartData")) || {};
+
+        if (cart[name]) {
+          cart[name].quantity += 1;
+        } else {
+          cart[name] = { emoji, price, quantity: 1 };
+        }
+
+        localStorage.setItem("cartData", JSON.stringify(cart));
+        updateCartIcon();
+      });
+    });
+  });
+</script>
+
+  
+</body>
+</html>
